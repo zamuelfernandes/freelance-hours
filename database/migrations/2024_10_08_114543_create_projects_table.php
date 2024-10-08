@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->string('status');
             $table->json('tech_stack');
             $table->dateTime('ends_at');
+            // CONSTRAINED PRECISA DE PARÂMETRO, SE NÃO ELE BUSCARÁ UMA TABELA "created_bies"
             $table->foreignIdFor(User::class, 'created_by')->constrained('users');
             $table->timestamps();
         });
