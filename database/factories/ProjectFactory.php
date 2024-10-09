@@ -18,19 +18,19 @@ class ProjectFactory extends Factory
      */
     public function definition(): array
     {
-        // dd(
-        //     collect(fake()->words(4))->join(' ')
-        // );
-
-
         return [
             'title' => collect(fake()->words(4))->join(' '),
             'description' => fake()->randomHtml(),
             'ends_at' => fake()->dateTimeBetween('now', '+ 3 days'),
             'status' => fake()->randomElement(['open', 'closed']),
-            'tech_stack' => fake()->randomElements(['nodejs', 'react', 'javascript', 'vite', 'nextjs',
-            // 'php', 'laravel', 'vue', 'tailwind', 'typescript', 'java', 'dart', 'flutter', 'python'
-        ], random_int(1, 5)),
+            'tech_stack' => fake()->randomElements([
+                'nodejs',
+                'react',
+                'javascript',
+                'vite',
+                'nextjs',
+                // 'php', 'laravel', 'vue', 'tailwind', 'typescript', 'java', 'dart', 'flutter', 'python'
+            ], random_int(1, 5)),
             'created_by' => User::factory(),
         ];
     }
