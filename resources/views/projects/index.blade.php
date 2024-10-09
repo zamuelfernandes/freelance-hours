@@ -1,3 +1,3 @@
 <x-layouts.app>
-    <livewire:projects.index :$projects />
+    <livewire:projects.index />
 </x-layouts.app>

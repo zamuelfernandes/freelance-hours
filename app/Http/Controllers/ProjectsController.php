@@ -8,11 +8,9 @@ class ProjectsController extends Controller
 {
     public function index()
     {
-        $projects = Project::query()->inRandomOrder()->get(); // or fetch relevant projects
-
         // dd($projects);
 
-        return view('projects.index', compact('projects'));
+        return view('projects.index');
     }
     public function show(Project $project)
     {

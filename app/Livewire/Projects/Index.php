@@ -8,15 +8,14 @@ use Livewire\Component;
 
 class Index extends Component
 {
-    public $projects;
     public function render()
     {
         return view('livewire.projects.index');
     }
 
-    // #[Computed()]
-    // public function projects()
-    // {
-    //     return Project::query()->inRandomOrder()->get();
-    // }
+    #[Computed()]
+    public function projects()
+    {
+        return Project::query()->inRandomOrder()->get();
+    }
 }
