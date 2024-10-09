@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
                     ->create(['created_by' => $u->id]);
 
                 Proposal::factory()
-                // ->count(random_int(1, 3))
+                    ->count(random_int(1, 30))
                     ->create(['project_id' => $project->id]);
             }
         );
