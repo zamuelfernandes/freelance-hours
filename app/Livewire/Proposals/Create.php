@@ -2,10 +2,15 @@
 
 namespace App\Livewire\Proposals;
 
+use App\Actions\ArrangePositions;
 use App\Models\Project;
 use App\Models\Proposal;
+use App\Livewire\Proposals\PerdeuMane;
+
+use DB;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
+
 
 class Create extends Component
 {
@@ -37,14 +42,44 @@ class Create extends Component
             return;
         }
 
-        $this->project->proposals()
-            ->updateOrCreate(
-                ['email' => $this->email],
-                ['hours' => $this->hours,]
-            );
+        DB::transaction(function () {
+            $proposal = $this->project->proposals()
+                ->updateOrCreate(
+                    ['email' => $this->email],
+                    ['hours' => $this->hours,]
+                );
+
+            $this->arrangePositions($proposal);
+        });
 
         $this->dispatch('proposal::created');
 
         $this->modal = false;
+    }
+
+    public function arrangePositions(Proposal $proposal)
+    {
+        $query = DB::select('
+            select *, row_number() over (order by hours asc) as newPosition
+            from proposals
+            where project_id = :project
+        ', ['project' => $proposal->project_id]);
+
+        $position = collect($query)
+            ->where('id', '=', $proposal->id)
+            ->first();
+
+        $otherProposal = collect($query)
+            ->where('position', '=', $position->newPosition)
+            ->first();
+
+        if ($otherProposal) {
+            $proposal->update(['position_status' => 'up']);
+            $oProposal = Proposal::find($otherProposal->id);
+
+            $oProposal->update(['position_status' => 'down']);
+            // $oProposal->notify(new PerdeuMane($this->project));
+        }
+        ArrangePositions::run($proposal->project_id);
     }
 }
