@@ -54,7 +54,7 @@ class Create extends Component
             $this->arrangePositions($proposal);
         });
 
-        $this->project->author->notify(new NewProposal($this->project));
+        // $this->project->author->notify(new NewProposal($this->project));
 
         $this->dispatch('proposal::created');
 
@@ -82,7 +82,7 @@ class Create extends Component
             $oProposal = Proposal::find($otherProposal->id);
 
             $oProposal->update(['position_status' => 'down']);
-            $oProposal->notify(new LostPosition($this->project));
+            // $oProposal->notify(new LostPosition($this->project));
         }
         ArrangePositions::run($proposal->project_id);
     }
