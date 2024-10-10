@@ -26,7 +26,7 @@ Siga os passos abaixo para configurar o projeto localmente:
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/freelance-hours.git
+git clone https://github.com/zamuelfernandes/freelance-hours.git
 ```
 
 2. Acesse o diretório do projeto:
