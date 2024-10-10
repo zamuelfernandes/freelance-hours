@@ -30,7 +30,15 @@ class ProjectFactory extends Factory
                 'javascript',
                 'vite',
                 'nextjs',
-                // 'php', 'laravel', 'vue', 'tailwind', 'typescript', 'java', 'dart', 'flutter', 'python'
+                'flutter',
+                'php',
+                'laravel',
+                'vue',
+                'tailwind',
+                'typescript',
+                'java',
+                'dart',
+                'python',
             ], random_int(1, 5)),
             'created_by' => User::factory(),
         ];
