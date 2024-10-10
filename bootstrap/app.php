@@ -10,9 +10,9 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__ . '/../routes/console.php',
         health: '/up',
     )
-    ->withSchedule(function (Schedule $schedule) {
-        $schedule->command('app:close-projects')->everyMinute();
-    })
+    // ->withSchedule(function (Schedule $schedule) {
+    //     $schedule->command('app:close-projects')->everyMinute();
+    // })
     ->withMiddleware(function (Middleware $middleware) {
         //
     })
