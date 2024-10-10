@@ -14,11 +14,10 @@ Este projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 🎯 Funcionalidades
 
--   Controle de horas trabalhadas para freelancers.
--   Criação, visualização, edição e exclusão de projetos.
--   Relatórios de horas por projeto.
+-   Criação de ofertas de projetos para execução.
+-   Oferta de propostas com horas como moeda.
+-   Ranking de melhores propostas por projeto.
 -   Interface dinâmica com Livewire para atualizações em tempo real.
--   Autenticação de usuários com Laravel Breeze.
 
 ## 📦 Instalação
 
